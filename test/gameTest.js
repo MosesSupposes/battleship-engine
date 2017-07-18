@@ -39,4 +39,22 @@ describe('GAME INSTANCE FUNCTIONS', function () {
             expect(actual).to.be.false;
         });
     });
+
+    function saveGame(cb) {
+        setTimeout(function() {
+            cb();
+        }, 1000);
+    }
+
+    describe('saveGame', function() {
+        var status = 'game not saved';
+        it ('should update save status', function(done) {
+            saveGame(function() {
+                status = 'game saved';
+                done();
+                expect(status).to.equal('game saved');
+            }); 
+        });
+    });
+
 });
